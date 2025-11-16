@@ -9,7 +9,14 @@ public class GestionProductosPOO {//inicia clase
         Scanner entradaDato=new Scanner(System.in);//captura cualquier tipo de dato
         GestorProductos gestor = new GestorProductos();//uso y llamado de los metodos
         
-        //para alta de productos
+        int ciclo;
+        
+        do {            
+            System.out.println("Menú productos\n 1-Agregar\n 2-Consultar\n 3-Eliminar\n4 Salir");
+            ciclo=entradaDato.nextInt();//para capturar opcion
+            switch (ciclo) {
+                case 1: 
+                        //para alta de productos
         System.out.println("Sistema de productos\nCaptura ID:  ");
         int id=entradaDato.nextInt();
         System.out.println("Captura Nombre:");
@@ -21,16 +28,33 @@ public class GestionProductosPOO {//inicia clase
         
         gestor.agregarProducto(new Producto(id, nombre, precio, stock));//almacena datos
         
-        //consultar
+                    
+                    break; 
+                case 2:
+                     //consultar
         gestor.listarProductos();
-        
-        System.out.println("ID a buscar: ");
+                break;
+                case 3:
+                   System.out.println("ID a buscar: ");
         Producto p=gestor.buscarPorId(entradaDato.nextInt());
         System.out.println(p !=null ? p : "Producto no encontrado");
-        System.out.println("ID a eliminar: ");
+                 System.out.println("ID a eliminar: ");
         gestor.eliminarProducto(entradaDato.nextInt());
         //consultar para actualizar
         
         gestor.listarProductos();
+                break;
+                case 4:  
+                    System.out.println("Finalizó el programa");
+                break;
+                
+                default:
+                break;
+            }
+        } while (ciclo!=4);
+    
+       
+        
+
     }//termina main
 }//termina clase
